@@ -1,0 +1,2 @@
+dotnet new webapi -f net8.0 -o dotnet8-api-app -n DotnetAPIApp -controllers
+
