@@ -1,3 +1,4 @@
+using DotnetAPIApp.Services.ThaiDate;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +8,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add Custom Service
+builder.Services.AddScoped<IThaiDate, ThaiDate>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
