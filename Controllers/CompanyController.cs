@@ -25,5 +25,12 @@ namespace DotnetAPIApp.Controllers
         {
             return Ok(new { message = $"Map Id: {id}" ,note = "[FromRoute] int id ==> calhost:port/api/company/map/555"});
         }
+
+        
+        [HttpGet("search")] // localhost:port/api/company/search?name=Google&code=111&location=Bkk
+        public IActionResult Search([FromQuery] string name, [FromQuery] int code,[FromQuery(Name = "location")] string province)
+        {
+            return Ok(new { message = $"Search by {name} and {code} and {province}" });
+        }
     }
 }
