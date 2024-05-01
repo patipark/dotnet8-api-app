@@ -1,3 +1,12 @@
 dotnet new webapi -f net8.0 -o dotnet8-api-app -n DotnetAPIApp -controllers
 dotnet new list
 
+
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+export PATH="$PATH:/Users/wad/.dotnet/tools"
+dotnet tool install --global dotnet-aspnet-codegenerator
+dotnet aspnet-codegenerator --help
+dotnet aspnet-codegenerator controller --help
+############ Gen Controller ############
+dotnet aspnet-codegenerator controller -name=CompanyController -api -async -outDir=Controllers -namespace=DotnetAPIApp.Controllers
+
