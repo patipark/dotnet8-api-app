@@ -10,3 +10,9 @@ dotnet aspnet-codegenerator controller --help
 ############ Gen Controller ############
 dotnet aspnet-codegenerator controller -name=CompanyController -api -async -outDir=Controllers -namespace=DotnetAPIApp.Controllers
 
+dotnet tool install --global dotnet-ef
+dotnet-ef --version
+dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+
