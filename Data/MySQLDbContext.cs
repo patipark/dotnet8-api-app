@@ -1,19 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//using System;
+//using System.Collections.Generic;
 using DotnetAPIApp.Models;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace DotnetAPIApp.Data;
 
 public partial class MySQLDbContext : DbContext
 {
-    public MySQLDbContext()
-    {
-    }
+    private IConfiguration _configuration;
+    //public MySQLDbContext(IConfiguration configuration)
+    //{
+    //    _configuration = configuration;
+    //}
 
-    public MySQLDbContext(DbContextOptions<MySQLDbContext> options)
+    public MySQLDbContext(DbContextOptions<MySQLDbContext> options , IConfiguration configuration)
         : base(options)
     {
+        _configuration = configuration;
     }
 
     public virtual DbSet<Article> Articles { get; set; }
@@ -43,8 +47,8 @@ public partial class MySQLDbContext : DbContext
     public virtual DbSet<UserProfile> UserProfiles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySQL("server=172.19.234.1;port=3306;user=root;password=M@riaD8;database=dotnet_core8_api;allowPublicKeyRetrieval=true");
+        => optionsBuilder.UseMySQL(_configuration.GetConnectionString("MySQLConnectionString")!);
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
