@@ -30,6 +30,8 @@ public partial class MySQLDbContext : DbContext
 
     public virtual DbSet<AuthRule> AuthRules { get; set; }
 
+    public virtual DbSet<Company> Companies { get; set; }
+
     public virtual DbSet<KeyStorageItem> KeyStorageItems { get; set; }
 
     public virtual DbSet<Log> Logs { get; set; }
