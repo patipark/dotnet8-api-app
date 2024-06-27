@@ -16,3 +16,18 @@ dotnet-ef
 dotnet add package Microsoft.EntityFrameworkCore.Design
 
 
+############ install EntityFrameworkCore ################
+
+dotnet tool install --global dotnet-ef
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+dotnet add package MySql.EntityFrameworkCore
+
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+
+########### project หาไม่เจอต้องลงอีกครั้ง #########
+dotnet add package MySql.EntityFrameworkCore
+
+############## ทำการ Gen dbcontext ชื่อ MySQLDbContext ไว้ใน folder Data และสร้าง model ของแต่ละ table ไว้ใน Folder Models #####################
+dotnet ef dbcontext scaffold "server=172.19.234.1;port=3306;user=root;password=M@riaD8;database=dotnet_core8_api;allowPublicKeyRetrieval=true" MySql.EntityFrameworkCore -c MySQLDbContext --context-dir Data -o Models -d
